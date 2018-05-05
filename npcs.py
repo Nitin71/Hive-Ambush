@@ -31,14 +31,14 @@ class NPC:
 
 
 class OldMan(NPC):
-	name = "Old Man"
-	goods = [items.Dagger(), items.Red_Potion(value = 50), items.Crusty_Bread(value = 5)]
-	quantities = [1, -1, 2]		# Set quantity to -1 if you want it to be infinite.
+	name = "Mysterious Old Man"
+	goods = [items.Pistol(value = 20), items.Red_Potion(value = 50), items.Cake(value = 5)]
+	quantities = [1, -1, -1]		# Set quantity to -1 if you want it to be infinite.
 	
-	description = "An old man in a red robe is standing in the middle of the room."
+	description = "A mysterious old man in a red robe is standing in the middle of the room. He has one too many potions in his arms."
 	
 	def talk(self):		# Add to this method if you want to be able to talk to your NPC.
-		print("The old man says: I can sell you an item or two, if you are interested:")
+		print("The mystserious old man says: I can sell you an item or two, if you are interested:")
 		for item in self.goods:
 			if item.value > 0:
 				if(self.quantities[self.goods.index(item)] > 0):
@@ -67,7 +67,7 @@ class OldMan(NPC):
 		return text
 		
 	def handle_input(self, verb, noun1, noun2, inventory):
-		if(noun1 == 'old man' or noun1 == 'man'):
+		if(noun1 == 'mysterious old man' or noun1 == 'man'):
 			if(verb == 'check'):
 				return [True, self.check_text(), inventory]
 			elif(verb == 'talk'):
@@ -80,5 +80,5 @@ class OldMan(NPC):
 						inventory = self.give(good, inventory)
 						return [True, "The old man gave you the %s." % good.name, inventory]
 					else:
-						return [True, "'Hey, what are you trying to pull? If you want that, the cost is %d gold.'" % good.value, inventory]
+						return [True, "'Hey! You want me to call the security? If you want that, you have to pay %d gold.'" % good.value, inventory]
 		return [False, "", inventory]

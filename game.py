@@ -7,7 +7,7 @@ import parse
 
 debug_mode = True	# Use this to toggle verbose mode on the text parser.
 
-game_name = "Escape from Cave Terror, v4"
+game_name = "Hive Ambush"
 
 help_text = "To interact with this game world, you will use a basic text-based interface. \
 Try single-word commands like 'inventory' or 'west' (or their counterpart abbreviations, 'i' or 'w', respectively \
@@ -20,7 +20,7 @@ To toggle output from the game parser, type 'debug'. To exit the game at any tim
 				
 
 player = Player()
-world = World()
+world = 	World()
 	
 def play():	
 	print_welcome_text()

@@ -140,9 +140,9 @@ class MapTile:
 
 
 class StartTile(MapTile):
-	items = [items.Rock()]
-	description = """You find yourself in a cave with a flickering torch on the wall.
-		You can make out a path to the east and to the west, each equally as dark and foreboding.
+	items = [items.Pistol()]
+	description = """You open your eyes to discover you are lost in a dark maze with nondescript writing filling the walls.
+		You can make out a path to the east and to the west, each equally mysterious.
 		"""
 
 class Corridor(MapTile):
@@ -208,7 +208,7 @@ class Corridor(MapTile):
 	
 		
 class StoreRoom(MapTile):
-	items = [items.Rusty_Sword("A rusty sword is propped against a shelf in the corner of the room."), \
+	items = [items.RPG("There is a rocket launcher lying on the ground."), \
 			items.Red_Potion("A glowing bottle of mysterious red potion sits on one of the shelves."), \
 			items.Old_Chest([items.Mountain_of_Gold()]), \
 			items.Gold_Coins("A shiny handful of gold coins is on the ground near the chest.")]
@@ -216,11 +216,12 @@ class StoreRoom(MapTile):
 	description = """You seem to have entered an underground storeroom!"""
 		
 class ExpanseSW(MapTile):
+	items = [items.Rifle("A long rifle that has a broken bayonet stands on a wall")]
 	description = """You find yourself in an expansive cavern, with walls stretching out nearly as far as the eye can see. The room opens before you to the northeast."""
 	
 	def random_spawn(self):
 		if(randint(0,3) == 0):		# 1 in 4 odds.
-			self.enemies = [enemies.BatColony()]
+			self.enemies = [enemies.Thrall()]
 		else:
 			self.enemies = []
 			
@@ -230,7 +231,7 @@ class ExpanseSE(MapTile):
 	
 	def random_spawn(self):
 		if(randint(0,2) == 0):		# 1 in 3 odds.
-			self.enemies = [enemies.BatColony()]
+			self.enemies = [enemies.Ogre()]
 		else:
 			self.enemies = []
 			
@@ -239,7 +240,7 @@ class ExpanseNW(MapTile):
 
 	def random_spawn(self):
 		if(randint(0,3) == 0):		# 1 in 4 odds.
-			self.enemies = [enemies.BatColony()]
+			self.enemies = [enemies.Shreiker()]
 		else:
 			self.enemies = []
 				
@@ -248,12 +249,12 @@ class ExpanseNE(MapTile):
 
 	def random_spawn(self):
 		if(randint(0,1) == 0):		# 1 in 2 odds.
-			self.enemies = [enemies.BatColony()]
+			self.enemies = [enemies.Knight()]
 		else:
 			self.enemies = []
 			
 class Nook(MapTile):
-	enemies = [enemies.RockMonster()]
+	enemies = [enemies.Ogre()]
 	description = """You have entered a shadowy nook of the cave. The only way out is back the way you came."""
 	
 class Cave(MapTile):
@@ -277,7 +278,7 @@ class World:									# I choose to define the world as a class. This makes it mo
 		[ExpanseNW(),												ExpanseNE(barriers = [barriers.Wall('n')]),	 																Nook(barriers = [barriers.Wall('n'), barriers.Wall('s'), barriers.Wall('e')]), 																										Corridor(barriers = [barriers.Wall('e'), barriers.Wall('w')], enemies = [enemies.Ogre('s')]),						Corridor(barriers = [barriers.Wall('w')])],
 		[ExpanseSW(),												ExpanseSE(barriers = [barriers.Wall('s')]), 																Corridor(barriers = [barriers.Wall('n'), barriers.Wall('s')]), 																														Corridor(barriers = [barriers.Wall('e'), barriers.Wall('s')]),		 												Corridor(barriers = [barriers.Wall('w')])],
 		[Corridor(barriers = [barriers.Wall('n')]),					Corridor(barriers = [barriers.Wall('n')]),																	StartTile(barriers = [barriers.Wall('s'), barriers.Wall('n')]), 																													Corridor(barriers = [barriers.Wall('n')]), 																			Corridor()],
-		[Cave(barriers = [barriers.Wall('e')]),						Corridor(barriers = [barriers.WoodenDoor('e'), barriers.Wall('w')], enemies = [enemies.GiantSpider('e')]),	StoreRoom(barriers = [barriers.Wall('n')]),																																			None,																												None]
+		[Cave(barriers = [barriers.Wall('e')]),						Corridor(barriers = [barriers.WoodenDoor('e'), barriers.Wall('w')], enemies = [enemies.Ogre('e')]),	StoreRoom(barriers = [barriers.Wall('n')]),																																			None,																												None]
 	]
 
 	def __init__(self):

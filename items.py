@@ -45,7 +45,7 @@ class Item:
 class Iron_Key(Item):
 	name = "iron key"
 	
-	description = "An old iron key. It looks like it would open a massive door."
+	description = "An old iron key. It looks like it would open a padlock."
 	dropped_description = "An old iron key is lying on the ground."		
 		
 		
@@ -58,13 +58,13 @@ class Consumable(Item):
 		return [self.consume_description, self.healing_value]
 			
 
-class Crusty_Bread(Consumable):
-	name = "crusty bread"
-	healing_value = 10
+class Cake(Consumable):
+	name = "cake"
+	healing_value = 30
 	
-	description = "Just a stale old piece of bread."
-	dropped_description = "A piece of crusty bread is lying on the ground."
-	consume_description = "You eat the crusty piece of bread."
+	description = "Sugar and spice and everything nice."
+	dropped_description = "A cake lies on the ground in a stylish box."
+	consume_description = "You eat the cake."
 			
 class Red_Potion(Consumable):
 	name = "red potion"
@@ -91,37 +91,37 @@ class Weapon(Item):
 		
 
 
-class Rock(Weapon):
-	name = "rock"
+class Pistol(Weapon):
+	name = "Pistol"
 	
-	description = "A fist-sized rock, suitable for bludgeoning."
-	dropped_description = "A fist-sized rock lies on the ground. It looks like it would be suitable for bludgeoning someone... or something."
-	equip_description = "You arm yourself with the rock."
-	attack_descriptions = ["You swing the rock as hard as you can. Crack!", "You wind up and chuck the rock at your enemy. Oof."]
-	
-	damage = 5
-
-
-class Dagger(Weapon):
-	name = "dagger"
-	
-	description = "A small dagger with some rust. It looks pretty sharp."
-	dropped_description = "A dagger lies on the ground. It looks somewhat more dangerous than a rock."
-	equip_description = "You take the dagger in your hand."
-	attack_descriptions = ["You lunge forward with the dagger.", "You stab wildly with the dagger.", "You swing the dagger at your foe."]
+	description = "A small handgun...it has some ammunition."
+	dropped_description = "A pistol lies on the ground. It will be handy in quick combat"
+	equip_description = "You arm yourself with the pistol."
+	attack_descriptions = ["You shoot the gun. Bam!", "The bullet penetrates through the flesh of your foe."]
 	
 	damage = 10
 
 
-class Rusty_Sword(Weapon):
-	name = "rusty sword"
+class Rifle(Weapon):
+	name = "rifle"
 	
-	description = "A rusty sword. Despite its age, it still looks deadly."
-	dropped_description = "There is a rusty sword lying on the ground."
-	equip_description = "You arm yourself with the rusty sword."
-	attack_descriptions = ["You slash with your rusty sword.", "Your rusty sword connects mightily with your enemy.", "You swing the rusty sword with all your might."]
+	description = "A long rifle with a broken bayonet"
+	dropped_description = "A rifle stands in the corner. It will be handy in killing enemy spawn."
+	equip_description = "You ready the rifle in both your arms."
+	attack_descriptions = ["You aim straight at the head.", "You quickly pull back the trigger and fire the weapon", "The foe recoils in pain."]
 	
 	damage = 20
+
+
+class RPG(Weapon):
+	name = "Rocket Launcher"
+	
+	description = "A decorated rocket launcher. It weighs a large amount. Not the best choice for close range targets"
+	dropped_description = "There is a rocket launcher lying on the ground."
+	equip_description = "You heave the rocket launcher onto your shoulders."
+	attack_descriptions = ["You aim for your large target.", "You pull the trigger and fall backwards.", "The rocket hits the foe as he becomes shrouded in a cloud of fire and smoke."]
+	
+	damage = 50
 	
 	
 class Gold(Item):
@@ -205,8 +205,8 @@ class Container:
 		
 class Old_Chest(Container):
 	name = "old chest"
-	closed_description = "A battered old chest sits against the far wall, its lid shut tightly."
-	open_description = "A battered old chest sits against the far wall, its lid open wide."
+	closed_description = "An old chest lies in the center of the room, waiting to be opened"
+	open_description = "An old chest lays open, full of items."
 	
 	def handle_input(self, verb, noun1, noun2, inventory):
 		if(noun1 == self.name):

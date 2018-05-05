@@ -2,14 +2,14 @@ import items
 
 class Player:
 	def __init__(self):
-		self.inventory = [items.Crusty_Bread()]
+		self.inventory = [items.Cake()]
 						
 		self.weapon = None
 		
-		self.gold = 5
+		self.gold = 25
 		
 		self.hp = 30
-		self.max_hp = 50
+		self.max_hp = 100
 		
 		self.x = 2
 		self.y = 3

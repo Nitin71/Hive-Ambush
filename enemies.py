@@ -1,9 +1,9 @@
 import items
 
 class Enemy:
-	name = "Do not create raw enemies!"
-	description = "There is no description here because you should not create raw Enemy objects!"
-	attack_description = "There is no attack_description here because you should not create raw Enemy objects!"
+	name = ""
+	description = ""
+	attack_description = ""
 	
 	hp = 0
 	damage = 0
@@ -60,32 +60,35 @@ class Enemy:
 		return [False, None, inventory]
 
 
-class GiantSpider(Enemy):
-	name = "Giant Spider"
-	description = "It twitches its mandibles at you menacingly."
+class Thrall(Enemy):
+	name = "Thrall"
+	description = "It will charge headlong into melee combat range if provoked."
 	hp = 10
 	damage = 2
+	loot = [items.Gold_Coins("A small stack of shiny gold coins lies next to the thrall's corpse.")]
 
 
 class Ogre(Enemy):
 	name = "Ogre"
-	description = "It looks angry."
+	description = "Be mindful that they have powerful attacks, making almost any position unsafe regardless of cover."
 	hp = 30
-	damage = 10
+	damage = 20
+	loot = [items.Gold_Coins("A small stack of shiny gold coins lies next to the Ogre's corpse.")]
 
 
-class BatColony(Enemy):
-	name = "Colony of bats"
-	description = "A colony of bats swarms through the air."
+class Shreiker(Enemy):
+	name = "Shreiker"
+	description = "When it begins attacking, it will not stop"
 	hp = 100
 	damage = 4
+	loot = [items.Gold_Coins("A small stack of shiny gold coins lies next to the Shreiker's corpse.")]
 	
 	agro = True
 
 
-class RockMonster(Enemy):
-	name = "Rock Monster"
-	description = "A Rock Monster appears from the shadows. An old iron key dangles precariously from a stalagmite on the monster's shoulder."
+class Knight(Enemy):
+	name = "Knight"
+	description = "An armored knight with a cleaver in its hand and an damaged iron key in its back is eager to attack."
 	hp = 80
 	damage = 15
-	loot = [items.Iron_Key("An old iron key lies on the ground near the remains of the Rock Monster.")]
+	loot = [items.Iron_Key("An old iron key lies on the ground near the remains of the Knight."), items.Mountain_of_Gold("The Knight's mountain of gold sits near the key")]
